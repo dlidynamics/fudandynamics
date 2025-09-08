@@ -15,12 +15,16 @@ title: Home
   {% endif %}
 {% endfor %}
 {% if next_seminar %}
-**{{ next_seminar.title }}**  
-{{ next_seminar.speaker }}{% if next_seminar.affiliation %} ({{ next_seminar.affiliation }}){% endif %}  
-*{{ next_seminar.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if next_seminar.place %} — {{ next_seminar.place }}{% endif %}*  
-{% if next_seminar.abstract %}{{ next_seminar.abstract }}{% endif %}
+  {% assign aff = next_seminar.affiliation | default: next_seminar.affliation %}
+  **{{ next_seminar.title }}**  
+  {{ next_seminar.speaker }}{% if aff %} ({{ aff }}){% endif %}  
+  *{{ next_seminar.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if next_seminar.place %} — {{ next_seminar.place }}{% endif %}*
+
+  {% if next_seminar.abstract %}
+  {{ next_seminar.abstract }}
+  {% endif %}
 {% else %}
-No upcoming seminar.
+  No upcoming seminar.
 {% endif %}
 
 ---
@@ -36,9 +40,12 @@ No upcoming seminar.
   {% endif %}
 {% endfor %}
 {% if next_event %}
-**{{ next_event.title }}**  
-*{{ next_event.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if next_event.place %} — {{ next_event.place }}{% endif %}*  
-{% if next_event.description %}{{ next_event.description }}{% endif %}
+  **{{ next_event.title }}**  
+  *{{ next_event.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if next_event.place %} — {{ next_event.place }}{% endif %}*
+
+  {% if next_event.description %}
+  {{ next_event.description }}
+  {% endif %}
 {% else %}
-No upcoming event.
+  No upcoming event.
 {% endif %}

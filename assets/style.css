@@ -3,25 +3,36 @@ header h1{margin:0 0 .2rem 0}
 nav a{margin-right:.6rem}
 
 
+
+
 .people-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  gap: 14px;
+  margin-top: 8px;
 }
+
 .person {
-  border: 1px solid #ccc;
-  padding: 6px;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 6px;
+  line-height: 1.4;   /* 行距 */
   box-sizing: border-box;
 }
+
+.person .name { font-weight: 600; margin-bottom: 2px; }
+.person .role { opacity: .8; }
+
 .person .avatar {
   width: 100%;
   max-height: 120px;
   object-fit: cover;
+  border-radius: 4px;
   display: block;
-  margin-bottom: .4rem;
+  margin-bottom: 6px;
 }
 
-/* 响应式：屏幕窄时自动变为 4/3/2 列 */
-@media (max-width: 900px) { .people-grid { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 700px) { .people-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 500px) { .people-grid { grid-template-columns: repeat(2, 1fr); } }
+/* 响应式：屏幕窄时自动降列数 */
+@media (max-width: 1000px) { .people-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 780px)  { .people-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 520px)  { .people-grid { grid-template-columns: repeat(2, 1fr); } }
