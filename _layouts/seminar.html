@@ -4,6 +4,6 @@ layout: default
 <article>
   <h2>{{ page.title }}</h2>
   <p><strong>{{ page.speaker }}</strong>{% if page.affiliation %} ({{ page.affiliation }}){% endif %}</p>
-  <p><em>{{ page.datetime | date: "%Y-%m-%d (%a) %H:%M %Z" }}</em>{% if page.place %} — {{ page.place }}{% endif %}</p>
+  <p><em>{{ page.datetime | date: "%Y-%m-%d %H:%M %Z" }}</em>{% if page.place %} — {{ page.place }}{% endif %}</p>
   {% if page.abstract %}<h3>Abstract</h3><p>{{ page.abstract }}</p>{% endif %}
 </article>

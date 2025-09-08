@@ -1,7 +1,6 @@
-title: Research Group Site
+title: Research Group
 timezone: Asia/Tokyo
 markdown: kramdown
-
 collections:
   seminars:
     output: true
