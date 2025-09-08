@@ -1,5 +1,10 @@
 people:
   - name: "Li, Dongchen"
     role: Faculty
+    website: dlidynamics.github.io
+
+  - name: "Li, Jialun"
+    role: Faculty
     email: dongchen@example.com
     website: https://example.com
+
