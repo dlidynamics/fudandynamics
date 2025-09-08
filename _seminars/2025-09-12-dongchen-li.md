@@ -2,6 +2,7 @@
 layout: seminar
 title: asdd
 speaker: Dongchen Li
+affiliation: Imperial College London
 datetime: 2027-09-12 15:30 +0900
 place: Room 301, SCMS
 abstract: >
