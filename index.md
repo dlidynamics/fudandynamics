@@ -16,30 +16,17 @@ title: Home
 {% endfor %}
 {% if next_seminar %}
 
-**{{ next_seminar.title }}**
+{% assign aff_en = next_seminar.affiliation | default: next_seminar.affliation %}
+{% assign aff_cn = next_seminar.affiliation_cn %}
+{% assign name_line = next_seminar.speaker %}
+{% if next_seminar.speaker_cn %}{% assign name_line = name_line | append: " " | append: next_seminar.speaker_cn %}{% endif %}
 
-{%- comment -%} 名字 + 中文名（可选） {%- endcomment -%}
-{%- assign name_line = next_seminar.speaker -%}
-{%- if next_seminar.speaker_cn -%}
-  {%- assign name_line = name_line | append: " " | append: next_seminar.speaker_cn -%}
-{%- endif -%}
-
-{%- comment -%} 单位：英文/中文均可选，至少一个才加括号 {%- endcomment -%}
-{%- assign aff_en = next_seminar.affiliation | default: next_seminar.affliation -%}
-{%- assign aff_cn = next_seminar.affiliation_cn -%}
-{%- if aff_en or aff_cn -%}
-  {%- assign aff_join = "" -%}
-  {%- if aff_en -%}{%- assign aff_join = aff_en -%}{%- endif -%}
-  {%- if aff_cn -%}{%- assign aff_join = aff_join | append: " " | append: aff_cn -%}{%- endif -%}
-  {{ name_line }} ({{ aff_join }})
-{%- else -%}
-  {{ name_line }}
-{%- endif %}
-
+**{{ next_seminar.title }}**<br/>
+{{ name_line }}{% if aff_en or aff_cn %} ({% if aff_en %}{{ aff_en }}{% endif %}{% if aff_en and aff_cn %} {{ aff_cn }}{% elsif aff_cn %}{{ aff_cn }}{% endif %}){% endif %}<br/>
 *{{ next_seminar.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if next_seminar.place %} — {{ next_seminar.place }}{% endif %}*
 
 {% if next_seminar.abstract %}
-  
+
 **Abstract**: {{ next_seminar.abstract }}
 {% endif %}
 {% else %}
