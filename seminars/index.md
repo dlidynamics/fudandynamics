@@ -1,12 +1,19 @@
 ---
 layout: default
 title: Seminars
+organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi              # ← 在这里填写当前组织者；可随时修改
 ---
 
 ## Seminars
+Current organizers: {% if page.organizers %}{{ page.organizers }}{% endif %}
 
 {% assign items = site.seminars | sort: "datetime" %}
-{% for s in items %}
+{% assign groups = items | group_by_exp: "s", "s.datetime | date: '%Y'" %}
+
+{% for g in groups %}
+### {{ g.name }}
+
+{% for s in g.items %}
 {% assign aff_en = s.affiliation | default: s.affliation %}
 {% assign aff_cn = s.affiliation_cn %}
 {% assign name_line = s.speaker %}
@@ -23,4 +30,6 @@ title: Seminars
 {% if forloop.last == false %}
 
 {% endif %}
+{% endfor %}
+
 {% endfor %}
