@@ -1,10 +1,9 @@
 people:
-  - name: "Li, Dongchen"
+  - name: "Li, Dongchen 李东宸"
     role: Faculty
-    website: dlidynamics.github.io
+    website: https://dlidynamics.github.io
 
   - name: "Li, Jialun"
     role: Faculty
-    email: dongchen@example.com
-    website: https://example.com
+    website: https://sites.google.com/view/jialunli
 
