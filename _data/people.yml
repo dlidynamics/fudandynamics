@@ -1,9 +1,11 @@
 people:
   - name: "Li, Dongchen 李东宸"
+    name_cn: 李东宸   
     role: Faculty
     website: https://dlidynamics.github.io
 
   - name: "Li, Jialun"
+    name_cn: 李嘉伦
     role: Faculty
     website: https://sites.google.com/view/jialunli
 

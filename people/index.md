@@ -22,12 +22,15 @@ title: People
   <section class="people-section">
     <h3>{{ role }}</h3>
     <div class="people-grid">
-      {% for person in group %}
+      {% assign group_sorted = group | sort: "name" %}
+      {% for person in group_sorted %}
         <div class="person">
           {% if person.photo %}
             <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" class="avatar">
           {% endif %}
-          <div class="name">{{ person.name }}</div>
+          <div class="name">
+            {{ person.name }}{% if person.name_cn %} {{ person.name_cn }}{% endif %}
+          </div>
           {% if person.email %}<div><a href="mailto:{{ person.email }}">{{ person.email }}</a></div>{% endif %}
           {% if person.website %}<div><a href="{{ person.website }}">Website</a></div>{% endif %}
         </div>
@@ -36,3 +39,26 @@ title: People
   </section>
   {% endif %}
 {% endfor %}
+
+{%- comment -%} 其他（未标 role 或不同拼写） {%- endcomment -%}
+{% assign others = all | where_exp: "p", "p.role != 'Faculty' and p.role != 'Postdocs' and p.role != 'Students' and p.role != 'Studends'" %}
+{% if others and others.size > 0 %}
+  <section class="people-section">
+    <h3>Others</h3>
+    <div class="people-grid">
+      {% assign others_sorted = others | sort: "name" %}
+      {% for person in others_sorted %}
+        <div class="person">
+          {% if person.photo %}
+            <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" class="avatar">
+          {% endif %}
+          <div class="name">
+            {{ person.name }}{% if person.name_cn %} {{ person.name_cn }}{% endif %}
+          </div>
+          {% if person.email %}<div><a href="mailto:{{ person.email }}">{{ person.email }}</a></div>{% endif %}
+          {% if person.website %}<div><a href="{{ person.website }}">Website</a></div>{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
