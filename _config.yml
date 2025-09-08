@@ -1,0 +1,26 @@
+# Site basics
+title: Your Research Group
+baseurl: ""         # keep empty if deploying to root (custom domain or org root)
+url: ""             # set to your domain later, e.g. https://seminar-group.org
+timezone: Europe/London
+markdown: kramdown
+
+# Collections for seminars & events
+collections:
+  seminars:
+    output: true
+    permalink: /seminar/:path/
+  events:
+    output: true
+    permalink: /events/:path/
+
+# Default layout for items in collections
+defaults:
+  - scope: { path: "", type: seminars }
+    values: { layout: seminar }
+  - scope: { path: "", type: events }
+    values: { layout: event }
+
+# Exclude admin if you don’t need it built
+exclude:
+  - README.md
