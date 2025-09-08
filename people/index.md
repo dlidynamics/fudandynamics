@@ -21,7 +21,9 @@ title: People
 
 <div class="person">
 {% if person.photo %}<img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" class="avatar">{% endif %}
-<div class="name">{{ person.name }}{% if person.name_cn %} {{ person.name_cn }}{% endif %}</div>
+<div class="name">
+{{ person.name }}{% if person.name_cn %}<br/>{{ person.name_cn }}{% endif %}
+</div>
 {% if person.email %}<div><a href="mailto:{{ person.email }}">{{ person.email }}</a></div>{% endif %}
 {% if person.website %}<div><a href="{{ person.website }}">Website</a></div>{% endif %}
 </div>
@@ -47,7 +49,9 @@ title: People
 
 <div class="person">
 {% if person.photo %}<img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" class="avatar">{% endif %}
-<div class="name">{{ person.name }}{% if person.name_cn %} {{ person.name_cn }}{% endif %}</div>
+<div class="name">
+{{ person.name }}{% if person.name_cn %}<br/>{{ person.name_cn }}{% endif %}
+</div>
 {% if person.email %}<div><a href="mailto:{{ person.email }}">{{ person.email }}</a></div>{% endif %}
 {% if person.website %}<div><a href="{{ person.website }}">Website</a></div>{% endif %}
 </div>
