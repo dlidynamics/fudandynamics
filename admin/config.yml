@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: dlidynamics/fudandynamics   # 👈 改成你的 GitHub 用户名/仓库名
   branch: main
+  base_url: https://seminar-oauth.onrender.com   # 👈 你在 Render 部署的 OAuth 代理地址
+  auth_endpoint: /auth
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
