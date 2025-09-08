@@ -27,9 +27,9 @@ Current organizers: {% if page.organizers %}{{ page.organizers }}{% endif %}
    **Abstract**: {{ s.abstract }}
 {% endif %}
 
-{% if forloop.last == false %}
-
-{% endif %}
+{% unless forloop.last %}
+<br/>
+{% endunless %}
 {% endfor %}
 
 {% endfor %}
