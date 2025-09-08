@@ -24,7 +24,7 @@ Current organizers: {% if page.organizers %}{{ page.organizers }}{% endif %}
    - {{ s.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if s.place %} — {{ s.place }}{% endif %}
 
 {% if s.abstract %}
-   {{ s.abstract }}
+   **Abstract**: {{ s.abstract }}
 {% endif %}
 
 {% if forloop.last == false %}
