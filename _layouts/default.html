@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/">{{ site.title }}</a></h1>
+    <nav>
+      <a href="/people/">People</a> ·
+      <a href="/seminars/">Seminar</a> ·
+      <a href="/events/">Events</a> ·
+      <a href="/admin/">Admin</a>
+    </nav>
+    <hr/>
+  </header>
+  <main>
+    {{ content }}
+  </main>
+  <footer><hr/><small>&copy; {{ "now" | date: "%Y" }}</small></footer>
+</body>
+</html>

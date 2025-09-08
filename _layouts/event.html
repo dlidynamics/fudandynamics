@@ -1,0 +1,8 @@
+---
+layout: default
+---
+<article>
+  <h2>{{ page.title }}</h2>
+  <p><em>{{ page.datetime | date: "%Y-%m-%d (%a) %H:%M %Z" }}</em>{% if page.place %} — {{ page.place }}{% endif %}</p>
+  {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+</article>

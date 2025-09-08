@@ -1,0 +1,11 @@
+title: Research Group Site
+timezone: Asia/Tokyo
+markdown: kramdown
+
+collections:
+  seminars:
+    output: true
+    permalink: /seminars/:path/
+  events:
+    output: true
+    permalink: /events/:path/
