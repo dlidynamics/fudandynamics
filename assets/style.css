@@ -42,9 +42,12 @@ nav a{margin-right:.6rem}
 
 /* 独立控制：标题字号 vs logo 高度 */
 :root {
-  --title-size: 1.8rem;  /* 只影响标题字号 */
+  --title-size: 2rem;  /* 只影响标题字号 */
   --logo-height: 80px;   /* 只影响两个 logo 的高度 */
 }
+
+/* add space between header and the first section (all pages) */
+header { margin-bottom: 14px; }
 
 /* 头部布局：左右两栏，垂直居中 */
 .header-row {
