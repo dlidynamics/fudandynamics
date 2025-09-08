@@ -38,3 +38,28 @@ nav a{margin-right:.6rem}
 .seminar-list li { margin-bottom: 1.6rem; }     /* 两条之间“多空一行”的效果 */
 .seminar-item-meta { margin-left: 1rem; }       /* 两个 sub-bullet 右移一些 */
 .seminar-item-abs  { margin-top: .6rem; }       /* 摘要前空一行；与题目左对齐 */
+
+
+/* 头部左右两栏 + 右上角并排 logo */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* 让logo贴近右上角 */
+  gap: 16px;
+}
+.brand-left h1 { margin: 0 0 .25rem 0; } /* 保持你原来的标题间距 */
+.brand-logos {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;            /* 两个 logo 之间的间距 */
+}
+.brand-logos img {
+  height: 40px;         /* 统一高度，宽度自适应 */
+  width: auto;
+  display: block;
+}
+
+/* 小屏缩小一点 logo，避免挤压导航 */
+@media (max-width: 600px) {
+  .brand-logos img { height: 28px; }
+}

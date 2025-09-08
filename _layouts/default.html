@@ -7,15 +7,24 @@
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 </head>
 <body>
-  <header>
-    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-    <nav>
-  <a href="{{ '/people/'   | relative_url }}">People</a> ·
-  <a href="{{ '/seminars/' | relative_url }}">Seminars</a> ·
-  <a href="{{ '/events/'   | relative_url }}">Events</a>
-    </nav>
-    <hr/>
-  </header>
+<header>
+  <div class="header-row">
+    <div class="brand-left">
+      <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      <nav>
+        <a href="{{ '/people/'   | relative_url }}">People</a> ·
+        <a href="{{ '/seminars/' | relative_url }}">Seminars</a> ·
+        <a href="{{ '/events/'   | relative_url }}">Events</a>
+      </nav>
+    </div>
+    <div class="brand-logos">
+      <!-- 如需可点击，给 <img> 外面包 <a href="..."> -->
+      <a href="https://scms.fudan.edu.cn/"><img src="{{ '/assets/logo-left.png'  | relative_url }}"  alt="logo1"></a>
+      <a href="https://math.fudan.edu.cn/main.htm"><img src="{{ '/assets/logo-right.png' | relative_url }}"  alt="logo2"></a>
+    </div>
+  </div>
+  <hr/>
+</header>
   <main>
     {{ content }}
   </main>
