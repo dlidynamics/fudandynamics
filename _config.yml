@@ -1,10 +1,8 @@
-title: Research Group
+title: Fudan Dynamics (SCMS + SMS)
 timezone: Asia/Tokyo
 markdown: kramdown
 collections:
   seminars:
-    output: true
-    permalink: /seminars/:path/
+    output: false   # 原来是 true；现在不生成 /seminars/:name/ 的详情页
   events:
-    output: true
-    permalink: /events/:path/
+    output: false
