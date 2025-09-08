@@ -1,9 +1,13 @@
 ---
 layout: default
 ---
+{% assign aff = page.affiliation | default: page.affliation %}
 <article>
   <h2>{{ page.title }}</h2>
-  <p><strong>{{ page.speaker }}</strong>{% if page.affiliation %} ({{ page.affiliation }}){% endif %}</p>
-  <p><em>{{ page.datetime | date: "%Y-%m-%d %H:%M %Z" }}</em>{% if page.place %} — {{ page.place }}{% endif %}</p>
+  <p>
+    <strong>{{ page.speaker }}{% if page.speaker_cn %} {{ page.speaker_cn }}{% endif %}</strong>
+    {% if aff %} ({{ aff }}){% endif %}
+  </p>
+  <p><em>{{ page.datetime | date: "%Y-%m-%d %H:%M" }}</em>{% if page.place %} — {{ page.place }}{% endif %}</p>
   {% if page.abstract %}<h3>Abstract</h3><p>{{ page.abstract }}</p>{% endif %}
 </article>

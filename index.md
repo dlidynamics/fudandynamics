@@ -16,13 +16,14 @@ title: Home
 {% endfor %}
 {% if next_seminar %}
   {% assign aff = next_seminar.affiliation | default: next_seminar.affliation %}
-  **{{ next_seminar.title }}**  
-  {{ next_seminar.speaker }}{% if aff %} ({{ aff }}){% endif %}  
-  *{{ next_seminar.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if next_seminar.place %} — {{ next_seminar.place }}{% endif %}*
+**{{ next_seminar.title }}**  
+{{ next_seminar.speaker }}{% if next_seminar.speaker_cn %} {{ next_seminar.speaker_cn }}{% endif %}  
+*{{ next_seminar.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if next_seminar.place %} — {{ next_seminar.place }}{% endif %}*
+{% if aff %} ({{ aff }}){% endif %}
 
-  {% if next_seminar.abstract %}
-  {{ next_seminar.abstract }}
-  {% endif %}
+{% if next_seminar.abstract %}
+{{ next_seminar.abstract }}
+{% endif %}
 {% else %}
   No upcoming seminar.
 {% endif %}

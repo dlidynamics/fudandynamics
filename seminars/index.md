@@ -14,10 +14,10 @@ title: Seminars
 {% assign current_year = y %}
 {% endif %}
 
-- **{{ s.title }}** — {{ s.speaker }}{% if s.affiliation %} ({{ s.affiliation }}){% endif %}
+- **{{ s.title }}** — {{ s.speaker }}{% if s.speaker_cn %} {{ s.speaker_cn }}{% endif %}
+  {% assign aff = s.affiliation | default: s.affliation %}
   - {{ s.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if s.place %} — {{ s.place }}{% endif %}
-  {% if s.abstract %}
-  - {{ s.abstract }}
-  {% endif %}
+  {% if aff %}- ({{ aff }}){% endif %}
+  {% if s.abstract %}- {{ s.abstract }}{% endif %}
 
 {% endfor %}
