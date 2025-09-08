@@ -11,18 +11,15 @@ nav a{margin-right:.6rem}
   gap: 14px;
   margin-top: 8px;
 }
-
 .person {
   border: 1px solid #ddd;
   padding: 8px;
   border-radius: 6px;
-  line-height: 1.4;   /* 行距 */
+  line-height: 1.4;
   box-sizing: border-box;
 }
-
 .person .name { font-weight: 600; margin-bottom: 2px; }
 .person .role { opacity: .8; }
-
 .person .avatar {
   width: 100%;
   max-height: 120px;
@@ -31,8 +28,6 @@ nav a{margin-right:.6rem}
   display: block;
   margin-bottom: 6px;
 }
-
-/* 响应式：屏幕窄时自动降列数 */
 @media (max-width: 1000px) { .people-grid { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 780px)  { .people-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 520px)  { .people-grid { grid-template-columns: repeat(2, 1fr); } }
