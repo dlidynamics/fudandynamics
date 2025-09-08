@@ -3,11 +3,6 @@ layout: default
 title: Seminars
 ---
 
----
-layout: default
-title: Seminars
----
-
 ## Seminars
 
 {% assign items = site.seminars | sort: "datetime" %}
