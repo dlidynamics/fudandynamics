@@ -51,7 +51,7 @@ nav a{margin-right:.6rem}
 }
 
 /* add space between header and the first section (all pages) */
-header { margin-bottom: 60px; }
+header { margin-bottom: 40px; }
 
 /* 头部布局：左右两栏，垂直居中 */
 .header-row {
