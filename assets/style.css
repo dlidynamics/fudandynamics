@@ -40,26 +40,54 @@ nav a{margin-right:.6rem}
 .seminar-item-abs  { margin-top: .6rem; }       /* 摘要前空一行；与题目左对齐 */
 
 
-/* 头部左右两栏 + 右上角并排 logo */
+/* 独立控制：标题字号 vs logo 高度 */
+:root {
+  --title-size: 1.8rem;  /* 只影响标题字号 */
+  --logo-height: 80px;   /* 只影响两个 logo 的高度 */
+}
+
+/* 头部布局：左右两栏，垂直居中 */
 .header-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* 让logo贴近右上角 */
+  align-items: center;   /* 关键：上下居中，无论谁更高 */
   gap: 16px;
 }
-.brand-left h1 { margin: 0 0 .25rem 0; } /* 保持你原来的标题间距 */
+
+/* 标题：用独立变量控制大小 */
+header h1 {
+  font-size: var(--title-size);
+  line-height: 1.1;      /* 稍紧凑，利于对齐 */
+  font-weight: 700;
+  margin: 0 0 .25rem 0;
+}
+
+/* 导航保持在标题下方（纵向堆叠） */
+.brand-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;              /* 标题与导航的间距 */
+}
+
+nav a { margin-right: .6rem; text-decoration: none; color: inherit; }
+nav a:hover { text-decoration: underline; }
+
+/* 右上两个 logo 并排，使用独立高度变量 */
 .brand-logos {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;            /* 两个 logo 之间的间距 */
+  align-items: center;   /* 让两张图在各自容器内也居中 */
+  gap: 10px;
 }
 .brand-logos img {
-  height: 40px;         /* 统一高度，宽度自适应 */
+  height: var(--logo-height);
   width: auto;
   display: block;
 }
 
-/* 小屏缩小一点 logo，避免挤压导航 */
+/* 小屏可独立缩放（按需调整） */
 @media (max-width: 600px) {
-  .brand-logos img { height: 28px; }
+  :root {
+    --title-size: 1.4rem;
+    --logo-height: 36px;
+  }
 }
