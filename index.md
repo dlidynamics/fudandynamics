@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-## Upcoming Seminar
+## Next Seminar
 {% assign now_ts = site.time | date: "%s" %}
 {% assign next_seminar = nil %}
 {% assign sorted_sems = site.seminars | sort: "datetime" %}
@@ -35,7 +35,7 @@ No upcoming seminar.
 
 ---
 
-## Upcoming Event
+## Next Event
 {% assign next_event = nil %}
 {% assign sorted_events = site.events | sort: "datetime" %}
 {% for e in sorted_events %}
