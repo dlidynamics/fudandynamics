@@ -8,12 +8,14 @@ organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi              # ← �
 <p>Current organizers: {% if page.organizers %}{{ page.organizers }}{% endif %}</p>
 
 {% assign items = site.seminars | sort: "datetime" %}
-{% assign groups = items | group_by_exp: "s", "s.datetime | date: '%Y'" %}
+{% assign now_ts = site.time | date: "%s" %}
 
-{% for g in groups %}
-<h3>{{ g.name }}</h3>
-<ol class="seminar-list">
-{% for s in g.items %}
+<h3>Upcoming seminars</h3>
+<ul class="seminar-list">
+{% assign future_printed = 0 %}
+{% for s in items %}
+{% assign s_ts = s.datetime | date: "%s" %}
+{% if s_ts >= now_ts %}
 {% assign aff_en = s.affiliation | default: s.affliation %}
 {% assign aff_cn = s.affiliation_cn %}
 {% assign name_line = s.speaker %}
@@ -21,16 +23,45 @@ organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi              # ← �
 {% assign aff_join = "" %}
 {% if aff_en %}{% assign aff_join = aff_en %}{% endif %}
 {% if aff_cn %}{% if aff_join != "" %}{% assign aff_join = aff_join | append: " " %}{% endif %}{% assign aff_join = aff_join | append: aff_cn %}{% endif %}
-
 <li>
-  <div class="seminar-item-title"><strong>{{ s.title }}</strong></div>
-  <div class="seminar-item-meta">{{ name_line }}{% if aff_join != "" %} ({{ aff_join }}){% endif %}</div>
-  <div class="seminar-item-meta">{{ s.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if s.place %} — {{ s.place }}{% endif %}</div>
-  {% if s.abstract %}
-  <div class="seminar-item-abs"><strong>Abstract</strong>: {{ s.abstract }}</div>
-  {% endif %}
+<div class="seminar-item-title"><strong>{{ s.title }}</strong></div>
+<div class="seminar-item-meta">{{ name_line }}{% if aff_join != "" %} ({{ aff_join }}){% endif %}</div>
+<div class="seminar-item-meta">{{ s.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if s.place %} — {{ s.place }}{% endif %}</div>
+{% if s.abstract %}<div class="seminar-item-abs"><strong>Abstract</strong>: {{ s.abstract }}</div>{% endif %}
 </li>
-
+{% assign future_printed = future_printed | plus: 1 %}
+{% endif %}
 {% endfor %}
-</ol>
+{% if future_printed == 0 %}<li>No upcoming seminars.</li>{% endif %}
+</ul>
+
+{% assign groups = items | group_by_exp: "s", "s.datetime | date: '%Y'" %}
+{% assign groups = groups | sort: "name" | reverse %}
+
+{% for g in groups %}
+{% assign printed = 0 %}
+{% for s in g.items %}
+{% assign s_ts = s.datetime | date: "%s" %}
+{% if s_ts < now_ts %}
+{% if printed == 0 %}
+<h3>{{ g.name }}</h3>
+<ul class="seminar-list">
+{% endif %}
+{% assign aff_en = s.affiliation | default: s.affliation %}
+{% assign aff_cn = s.affiliation_cn %}
+{% assign name_line = s.speaker %}
+{% if s.speaker_cn %}{% assign name_line = name_line | append: " " | append: s.speaker_cn %}{% endif %}
+{% assign aff_join = "" %}
+{% if aff_en %}{% assign aff_join = aff_en %}{% endif %}
+{% if aff_cn %}{% if aff_join != "" %}{% assign aff_join = aff_join | append: " " %}{% endif %}{% assign aff_join = aff_join | append: aff_cn %}{% endif %}
+<li>
+<div class="seminar-item-title"><strong>{{ s.title }}</strong></div>
+<div class="seminar-item-meta">{{ name_line }}{% if aff_join != "" %} ({{ aff_join }}){% endif %}</div>
+<div class="seminar-item-meta">{{ s.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if s.place %} — {{ s.place }}{% endif %}</div>
+{% if s.abstract %}<div class="seminar-item-abs"><strong>Abstract</strong>: {{ s.abstract }}</div>{% endif %}
+</li>
+{% assign printed = printed | plus: 1 %}
+{% endif %}
+{% endfor %}
+{% if printed > 0 %}</ul>{% endif %}
 {% endfor %}
