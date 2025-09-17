@@ -12,7 +12,7 @@ permalink: /seminars/by-year.html
   {%- assign grouped = all_sorted | group_by_exp: "e", "e.datetime | date: '%Y'" -%}
   {%- assign years = grouped | map: "name" | sort | reverse -%}
   {%- for y in years -%}
-    <a href="/seminars/by-year.html?y={{ y }}" style="margin-right: .5rem; text-decoration: none;">
+    <a href="{{ '/seminars/by-year.html' | relative_url }}?y={{ y }}" style="margin-right: .5rem; text-decoration: none;">
       {{ y }}
     </a>
   {%- endfor -%}
