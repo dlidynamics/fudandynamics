@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Seminars by Year
-permalink: /seminars/by-year.html
 ---
 
 <h1>Seminars</h1>
@@ -12,7 +11,8 @@ permalink: /seminars/by-year.html
   {%- assign grouped = all_sorted | group_by_exp: "e", "e.datetime | date: '%Y'" -%}
   {%- assign years = grouped | map: "name" | sort | reverse -%}
   {%- for y in years -%}
-    <a href="{{ '/seminars/by-year.html' | relative_url }}?y={{ y }}" style="margin-right: .5rem; text-decoration: none;">
+    <!-- 关键：相对链接（同目录跳转） -->
+    <a href="by-year.html?y={{ y }}" style="margin-right: .5rem; text-decoration: none;">
       {{ y }}
     </a>
   {%- endfor -%}
@@ -23,21 +23,9 @@ permalink: /seminars/by-year.html
 
 <script>
 (function() {
-  // 读取 URL 参数 ?y=YYYY
   const params = new URLSearchParams(window.location.search);
   const year = params.get('y');
 
-  // 嵌入所有 seminars 的数据（仅提取需要的字段，避免页面过大）
-  const DATA = {{ site.seminars | map: "title" | jsonify }}; // dummy line to keep GitHub Pages from stripping collection
-})();
-</script>
-
-<script>
-(function() {
-  const params = new URLSearchParams(window.location.search);
-  const year = params.get('y');
-
-  // 将所有 seminars 序列化为简单 JSON（挑必要字段）
   const seminars = [
     {% assign all = site.seminars | sort: "datetime" %}
     {% for s in all %}
@@ -54,29 +42,17 @@ permalink: /seminars/by-year.html
     {% endfor %}
   ];
 
-  // 过滤出该年份
-  const list = (year ?
-    seminars.filter(it => it.iso.slice(0,4) === year) :
-    seminars
-  );
+  const list = (year ? seminars.filter(it => it.iso.slice(0,4) === year) : seminars);
 
-  // 渲染标题
   const titleEl = document.getElementById('year-title');
-  if (year) {
-    titleEl.textContent = `Year: ${year}`;
-  } else {
-    titleEl.textContent = 'All years';
-  }
+  titleEl.textContent = year ? `Year: ${year}` : 'All years';
 
-  // 渲染列表（按时间升序，已经是升序；如果你想再保险，也可在此排序一次）
   const ul = document.getElementById('seminar-list');
   ul.innerHTML = '';
-
   if (list.length === 0) {
     ul.insertAdjacentHTML('beforeend', '<li>No seminars in this year.</li>');
     return;
   }
-
   for (const s of list) {
     const li = document.createElement('li');
     li.id = s.anchor;
