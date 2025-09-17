@@ -5,24 +5,6 @@ organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi              # ← �
 ---
 
 <h2>Seminars</h2>
-
-{% assign all_sorted = site.seminars | sort: "datetime" %}
-{% assign grouped = all_sorted | group_by_exp: "e", "e.datetime | date: '%Y'" %}
-{% assign years = grouped | map: "name" | sort | reverse %}
-
-{% if years and years.size > 0 %}
-  <nav class="year-nav" style="margin: 0.75rem 0 1.25rem 0;">
-    <strong style="margin-right: .5rem;">Past seminars:</strong>
-    {% for y in years %}
-      <!-- 关键：相对链接，同目录跳转 -->
-      <a href="by-year.html?y={{ y }}" style="margin-right: .5rem; text-decoration: none;">
-        {{ y }}
-      </a>
-    {% endfor %}
-  </nav>
-{% endif %}
-
-
 <p>Current organizers: {% if page.organizers %}{{ page.organizers }}{% endif %}</p>
 
 {% assign items = site.seminars | sort: "datetime" %}
