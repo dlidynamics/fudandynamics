@@ -13,7 +13,7 @@ organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi              # â† åœ
 
 {%- if years and years.size > 0 -%}
   <nav class="year-nav" style="margin: 0.75rem 0 1.25rem 0;">
-    <strong style="margin-right: .5rem;">Years:</strong>
+    <strong style="margin-right: .5rem;">Past seminars:</strong>
     {%- for y in years -%}
       <a href="/seminars/by-year.html?y={{ y }}" style="margin-right: .5rem; text-decoration: none;">
         {{ y }}
