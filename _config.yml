@@ -1,6 +1,4 @@
 title: Fudan Dynamics (SCMS + SMS)
-url: "https://dlidynamics.github.io"
-baseurl: "/fudandynamics"   # 注意前面有 /，后面不要 /
 timezone: Asia/Shanghai
 markdown: kramdown
 collections:
