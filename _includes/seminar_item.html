@@ -1,0 +1,8 @@
+<li>
+  <div class="seminar-item-title"><strong>{{ s.title }}</strong></div>
+  <div class="seminar-item-meta">{{ name_line }}{% if aff_join != "" %} ({{ aff_join }}){% endif %}</div>
+  <div class="seminar-item-meta">{{ s.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if s.place %} — {{ s.place }}{% endif %}</div>
+  {% if s.abstract %}
+  <div class="seminar-item-abs"><strong>Abstract</strong>: {{ s.abstract }}</div>
+  {% endif %}
+</li>
