@@ -21,7 +21,7 @@ title: Seminars
 
 * **{{ s.title }}**<br>
   {%- assign name_line = s.speaker -%}
-  {%- if s.speaker_cn -%}{%- assign name_line = name_line | append: " " | append: s.speaker_cn -%}{%- endif -%}
+  {%- if s.speaker_cn -%}{%- assign name_line = name_line | append: " " | append: s.speaker_cn -%}{%- endif -%} 
   {%- assign aff_en = s.affiliation | default: s.affliation -%}
   {%- assign aff_cn = s.affiliation_cn -%}
   {%- assign aff_join = "" -%}
@@ -81,15 +81,15 @@ title: Seminars
   {% assign s_ts = s.datetime | date: "%s" | plus: 0 %}
   {% if y2 == y and s_ts < now_ts %}
 
-* **{{ s.title }}**
+* **{{ s.title }}**<br>
   {%- assign name_line = s.speaker -%}
-  {%- if s.speaker_cn -%}{%- assign name_line = name_line | append: " " | append: s.speaker_cn -%}{%- endif -%}
+  {%- if s.speaker_cn -%}{%- assign name_line = name_line | append: " " | append: s.speaker_cn -%}{%- endif -%} 
   {%- assign aff_en = s.affiliation | default: s.affliation -%}
   {%- assign aff_cn = s.affiliation_cn -%}
   {%- assign aff_join = "" -%}
   {%- if aff_en -%}{%- assign aff_join = aff_en -%}{%- endif -%}
   {%- if aff_cn -%}{%- if aff_join != "" -%}{%- assign aff_join = aff_join | append: " / " -%}{%- endif -%}{%- assign aff_join = aff_join | append: aff_cn -%}{%- endif -%}
-  {{- name_line -}}{%- if aff_join != "" -%} ({{ aff_join }}){%- endif -%}  
+  {{- name_line -}}{%- if aff_join != "" -%} ({{ aff_join }}){%- endif -%}  <br>
   _{{- s.datetime | date: "%Y-%m-%d (%a) %H:%M" -}}{%- if s.place -%} — {{ s.place }}{%- endif -%}_
 
   **Abstract**{%- if s.abstract -%}: {{ s.abstract }}{%- endif -%}
