@@ -27,7 +27,7 @@ title: Seminars
   {%- assign aff_join = "" -%}
   {%- if aff_en -%}{%- assign aff_join = aff_en -%}{%- endif -%}
   {%- if aff_cn -%}{%- if aff_join != "" -%}{%- assign aff_join = aff_join | append: " / " -%}{%- endif -%}{%- assign aff_join = aff_join | append: aff_cn -%}{%- endif -%}
-  {{- name_line -}}{%- if aff_join != "" -%} ({{ aff_join }}){%- endif -%}  <br>
+  {{- name_line -}}{%- if aff_join != "" -%}&nbsp;({{ aff_join }}){%- endif -%}  <br>
   _{{- s.datetime | date: "%Y-%m-%d (%a) %H:%M" -}}{%- if s.place -%} — {{ s.place }}{%- endif -%}_
 
   **Abstract**{%- if s.abstract -%}: {{ s.abstract }}{%- endif -%}
@@ -89,7 +89,7 @@ title: Seminars
   {%- assign aff_join = "" -%}
   {%- if aff_en -%}{%- assign aff_join = aff_en -%}{%- endif -%}
   {%- if aff_cn -%}{%- if aff_join != "" -%}{%- assign aff_join = aff_join | append: " / " -%}{%- endif -%}{%- assign aff_join = aff_join | append: aff_cn -%}{%- endif -%}
-  {{- name_line -}}{%- if aff_join != "" -%} ({{ aff_join }}){%- endif -%}  <br>
+  {{- name_line -}}{%- if aff_join != "" -%}&nbsp;({{ aff_join }}){%- endif -%}  <br>
   _{{- s.datetime | date: "%Y-%m-%d (%a) %H:%M" -}}{%- if s.place -%} — {{ s.place }}{%- endif -%}_
 
   **Abstract**{%- if s.abstract -%}: {{ s.abstract }}{%- endif -%}
