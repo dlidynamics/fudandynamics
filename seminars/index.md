@@ -20,7 +20,6 @@ title: Seminars
   {% if s_ts >= now_ts %}
 
 * **{{ s.title }}**
-  {% comment %} 续行对齐到 bullet 文本左边（前导两个空格很重要） {% endcomment %}
   {% assign name_line = s.speaker %}
   {% if s.speaker_cn %}{% assign name_line = name_line | append: " " | append: s.speaker_cn %}{% endif %}
   {% assign aff_en = s.affiliation | default: s.affliation %}
@@ -28,10 +27,9 @@ title: Seminars
   {% assign aff_join = "" %}
   {% if aff_en %}{% assign aff_join = aff_en %}{% endif %}
   {% if aff_cn %}{% if aff_join != "" %}{% assign aff_join = aff_join | append: " / " %}{% endif %}{% assign aff_join = aff_join | append: aff_cn %}{% endif %}
-  {{ name_line }}{% if aff_join != "" %} ({{ aff_join }}){% endif %}
-  {{ s.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if s.place %} — {{ s.place }}{% endif %}
-
-* **Abstract**{% if s.abstract %}: {{ s.abstract }}{% endif %}
+  {{ name_line }}{% if aff_join != "" %} ({{ aff_join }}){% endif %}<br>
+  {{ s.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if s.place %} — {{ s.place }}{% endif %}<br>
+  **Abstract**{% if s.abstract %}: {{ s.abstract }}{% endif %}
 
   {% assign printed_upcoming = printed_upcoming | plus: 1 %}
   {% endif %}
@@ -90,10 +88,9 @@ title: Seminars
   {% assign aff_join = "" %}
   {% if aff_en %}{% assign aff_join = aff_en %}{% endif %}
   {% if aff_cn %}{% if aff_join != "" %}{% assign aff_join = aff_join | append: " / " %}{% endif %}{% assign aff_join = aff_join | append: aff_cn %}{% endif %}
-  {{ name_line }}{% if aff_join != "" %} ({{ aff_join }}){% endif %}
-  {{ s.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if s.place %} — {{ s.place }}{% endif %}
-
-* **Abstract**{% if s.abstract %}: {{ s.abstract }}{% endif %}
+  {{ name_line }}{% if aff_join != "" %} ({{ aff_join }}){% endif %}<br>
+  {{ s.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if s.place %} — {{ s.place }}{% endif %}<br>
+  **Abstract**{% if s.abstract %}: {{ s.abstract }}{% endif %}
 
   {% endif %}
 {% endfor %}
@@ -103,7 +100,7 @@ title: Seminars
 {% endfor %}
 
 <style>
-/* 可选的浅样式：不影响你原有 Markdown 渲染 */
+/* 折叠区的轻量样式（不改变你的 Markdown 列表格式） */
 .seminar-section, .seminar-year { margin: 0 0 1rem 0; }
 .seminar-section > summary, .seminar-year > summary {
   cursor: pointer;
