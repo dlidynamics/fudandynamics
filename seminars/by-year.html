@@ -5,68 +5,53 @@ title: Seminars by Year
 
 <h1>Seminars</h1>
 
+<!-- 顶部年份导航（同目录相对链接） -->
 <nav class="year-nav" style="margin: 0.75rem 0 1.25rem 0;">
-  <strong style="margin-right: .5rem;">Years:</strong>
+  <strong style="margin-right: .5rem;">By year:</strong>
   {%- assign all_sorted = site.seminars | sort: "datetime" -%}
   {%- assign grouped = all_sorted | group_by_exp: "e", "e.datetime | date: '%Y'" -%}
   {%- assign years = grouped | map: "name" | sort | reverse -%}
   {%- for y in years -%}
-    <!-- 关键：相对链接（同目录跳转） -->
-    <a href="by-year.html?y={{ y }}" style="margin-right: .5rem; text-decoration: none;">
-      {{ y }}
-    </a>
+    <a href="by-year.html?y={{ y }}" style="margin-right: .5rem; text-decoration: none;">{{ y }}</a>
   {%- endfor -%}
 </nav>
 
-<div id="year-title" style="margin: .5rem 0 1rem 0; font-weight: 600;"></div>
-<ul id="seminar-list" class="seminar-list"></ul>
+{%- comment -%} —— 以下：**复用与 Seminars 子页同样的渲染** —— {%- endcomment -%}
+
+{%- assign now_ts = site.time | date: "%s" -%}
+{%- assign all_sorted = site.seminars | sort: "datetime" -%}
+{%- assign past = all_sorted | where_exp: "e", "e.datetime | date: '%s' < now_ts" -%}
+{%- assign past_by_year = past | group_by_exp: "e", "e.datetime | date: '%Y'" -%}
+{%- assign years = past_by_year | map: "name" | sort | reverse -%}
+
+{%- for y in years -%}
+  {%- assign bucket = past_by_year | where: "name", y | first -%}
+  {%- if bucket.items and bucket.items.size > 0 -%}
+    {%- assign ys = bucket.items | sort: "datetime" -%}
+    {% include seminar_year_block.html year=y items=ys %}
+  {%- endif -%}
+{%- endfor -%}
 
 <script>
-(function() {
-  const params = new URLSearchParams(window.location.search);
-  const year = params.get('y');
+/* 只保留 ?y=YYYY 指定的年份区块；其余年份隐藏 */
+(function(){
+  const params = new URLSearchParams(location.search);
+  const y = params.get('y');
+  if (!y) return; // 未指定年份则显示全部（可按需改成跳回 /seminars/）
 
-  const seminars = [
-    {% assign all = site.seminars | sort: "datetime" %}
-    {% for s in all %}
-      {
-        "title": {{ s.title | jsonify }},
-        "speaker": {{ s.speaker | default: "" | jsonify }},
-        "place": {{ s.place | default: "" | jsonify }},
-        "abstract": {{ s.abstract | default: "" | jsonify }},
-        "url": {{ s.url | default: s.permalink | jsonify }},
-        "iso": "{{ s.datetime | date: '%Y-%m-%dT%H:%M:%S%z' }}",
-        "date_human": "{{ s.datetime | date: '%A, %d %b %Y, %H:%M (%Z)' }}",
-        "anchor": "{{ s.datetime | date: '%Y-%m-%d' }}"
-      }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
+  // 隐藏所有年份块，仅显示 data-year = y 的
+  document.querySelectorAll('.seminar-year').forEach(el => {
+    if (el.getAttribute('data-year') === y) {
+      // 默认折叠的话可展开指定年份
+      el.setAttribute('open', '');
+      el.style.display = '';
+    } else {
+      el.style.display = 'none';
+    }
+  });
 
-  const list = (year ? seminars.filter(it => it.iso.slice(0,4) === year) : seminars);
-
-  const titleEl = document.getElementById('year-title');
-  titleEl.textContent = year ? `Year: ${year}` : 'All years';
-
-  const ul = document.getElementById('seminar-list');
-  ul.innerHTML = '';
-  if (list.length === 0) {
-    ul.insertAdjacentHTML('beforeend', '<li>No seminars in this year.</li>');
-    return;
-  }
-  for (const s of list) {
-    const li = document.createElement('li');
-    li.id = s.anchor;
-    li.innerHTML = `
-      <div class="title">${s.title}</div>
-      <div class="meta">
-        ${s.date_human}
-        ${s.place ? ' · ' + s.place : ''}
-        ${s.speaker ? ' · ' + s.speaker : ''}
-      </div>
-      ${s.abstract ? `<p>${s.abstract}</p>` : ''}
-      ${s.url ? `<a href="${s.url}">Details</a>` : ''}
-    `;
-    ul.appendChild(li);
-  }
+  // 把页面标题补上所选年份
+  const h1 = document.querySelector('h1');
+  if (h1) h1.textContent = 'Seminars — ' + y;
 })();
 </script>
