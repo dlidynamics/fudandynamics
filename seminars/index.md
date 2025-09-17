@@ -99,4 +99,19 @@ Abstract: {{ s.abstract }}
   {% endif %}
 {% endfor %}
 
-
+<style>
+/* 可选的浅样式：不影响你原有 Markdown 渲染 */
+.seminar-section, .seminar-year { margin: 0 0 1rem 0; }
+.seminar-section > summary, .seminar-year > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: .4rem .6rem;
+  border-radius: .5rem;
+  background: rgba(0,0,0,.04);
+}
+.seminar-section[open] > summary, .seminar-year[open] > summary {
+  background: rgba(0,0,0,.06);
+}
+.seminar-section > summary::-webkit-details-marker,
+.seminar-year > summary::-webkit-details-marker { display: none; }
+</style>
