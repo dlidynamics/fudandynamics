@@ -1,0 +1,52 @@
+name: Build & Deploy Jekyll site to Pages (daily)
+
+on:
+  # 每天在 UTC 16:05 触发（等于上海时间次日 00:05）
+  schedule:
+    - cron: '5 16 * * *'
+  # 正常推送也触发一次（可保留）
+  push:
+    branches: [ main ]
+  # 允许在 Actions 页手动运行
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # 配置 Pages（官方 action）
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      # 构建 Jekyll（官方 action，免去手动装 Ruby/gems）
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      # 打包构建产物供部署
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
