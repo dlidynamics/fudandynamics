@@ -1,9 +1,4 @@
 people:
-  - name: "Li, Dongchen"
-    name_cn: 李东宸   
-    role: Faculty
-    website: https://dlidynamics.github.io
-
   - name: "Li, Jialun"
     name_cn: 李嘉伦
     role: Faculty
@@ -18,3 +13,18 @@ people:
     name_cn: 石荣刚
     role: Faculty
     website: https://rgstone.github.io
+
+  - name: "Li, Dongchen"
+    name_cn: 李东宸   
+    role: Faculty
+    website: https://dlidynamics.github.io
+
+  - name: "Shen, Weixiao"
+    name_cn: 沈维孝   
+    role: Faculty
+    website: https://scms.fudan.edu.cn/info/2668/2695.htm
+
+  - name: "Tian, Xueting"
+    name_cn: 田学廷   
+    role: Faculty
+    website: https://math.fudan.edu.cn/fa/0b/c30607a326155/page.htm
