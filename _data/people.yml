@@ -33,3 +33,18 @@ people:
     name_cn: 张国华   
     role: Faculty
     website: https://faculty.fudan.edu.cn/zhangguohua/zh_CN
+
+  - name: "Yan, Jun"
+    name_cn: 严军   
+    role: Faculty
+    website: https://math.fudan.edu.cn/fa/31/c30607a326193/page.htm
+
+  - name: "Yuan, Xiaoping"
+    name_cn: 袁小平   
+    role: Faculty
+    website: https://math.fudan.edu.cn/f9/ff/c30607a326143/page.htm
+
+  - name: "Liang, Zhenguo"
+    name_cn: 梁振国   
+    role: Faculty
+    website: https://math.fudan.edu.cn/fa/16/c30607a326166/page.htm
