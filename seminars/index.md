@@ -4,6 +4,7 @@ title: Seminars
 ---
 
 # Seminars
+Current Organizers: Dongchen Li, Jiajun Li, Ronggang Shi, Ruxi Shi
 
 {% assign items = site.seminars | sort: "datetime" %}
 {% assign now_ts = site.time | date: "%s" | plus: 0 %}
