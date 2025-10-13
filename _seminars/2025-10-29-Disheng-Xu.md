@@ -1,6 +1,6 @@
 ---
 layout: seminar
-title: Global rigidity for higher rank group actions on manifolds: Zimmer program and Katok-Spatzier conjecture
+title: "Global rigidity for higher rank group actions on manifolds: Zimmer program and Katok-Spatzier conjecture"
 speaker: Disheng Xu          # 英文名（必填）
 speaker_cn:  许地生              # 中文名（可选）
 affiliation:  Great Bay university    # 英文单位（可选）
