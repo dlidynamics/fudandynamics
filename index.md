@@ -27,7 +27,7 @@ title: Home
 
 {% if next_seminar.abstract %}
 
-**Abstract**: {{ next_seminar.abstract }}
+Abstract: {{ next_seminar.abstract }}
 {% endif %}
 {% else %}
 No upcoming seminar.
