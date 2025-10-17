@@ -31,7 +31,7 @@ Current Organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi
   {{- name_line -}}{%- if aff_join != "" -%}&nbsp;({{ aff_join }}){%- endif -%}  <br>
   _{{- s.datetime -}}{%- if s.place -%} — {{ s.place }}{%- endif -%}_
 
-  **Abstract**{%- if s.abstract -%}: {{ s.abstract }}{%- endif -%}
+  Abstract{%- if s.abstract -%}: {{ s.abstract }}{%- endif -%}
 
   {%- assign printed_upcoming = printed_upcoming | plus: 1 -%}
   {% endif %}
