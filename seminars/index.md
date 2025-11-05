@@ -18,18 +18,15 @@ Current Organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi
 {% assign printed_upcoming = 0 %}
 
 {%- comment -%}
-筛选“将来”的 seminar
+先按“天”分组（YYYY-MM-DD）
 {%- endcomment -%}
-{% assign upcoming = items | where_exp: "s", "s.datetime and (s.datetime | date: '%s') | plus: 0 >= now_ts" %}
-
-{%- comment -%}
-按日期（天）分组，然后在组内按 datetime 升序
-{%- endcomment -%}
-{% assign by_day = upcoming | group_by_exp: "s", "s.datetime | date: '%Y-%m-%d'" %}
+{% assign by_day = items | group_by_exp: "s", "s.datetime | date: '%Y-%m-%d'" %}
 
 {%- for day in by_day -%}
   {%- assign day_items = day.items | sort: "datetime" -%}
   {%- for s in day_items -%}
+    {%- assign s_ts = s.datetime | date: "%s" | plus: 0 -%}
+    {%- if s_ts >= now_ts -%}
 
 * **{{ s.title }}**<br>
   {%- assign name_line = s.speaker -%}
@@ -44,7 +41,8 @@ Current Organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi
 
   Abstract{%- if s.abstract -%}: {{ s.abstract }}{%- endif -%}
 
-  {%- assign printed_upcoming = printed_upcoming | plus: 1 -%}
+      {%- assign printed_upcoming = printed_upcoming | plus: 1 -%}
+    {%- endif -%}
   {%- endfor -%}
 {%- endfor -%}
 
