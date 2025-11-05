@@ -16,17 +16,9 @@ Current Organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi
   </summary>
 
 {% assign printed_upcoming = 0 %}
-
-{%- comment -%}
-先按“天”分组（YYYY-MM-DD）
-{%- endcomment -%}
-{% assign by_day = items | group_by_exp: "s", "s.datetime | date: '%Y-%m-%d'" %}
-
-{%- for day in by_day -%}
-  {%- assign day_items = day.items | sort: "datetime" -%}
-  {%- for s in day_items -%}
-    {%- assign s_ts = s.datetime | date: "%s" | plus: 0 -%}
-    {%- if s_ts >= now_ts -%}
+{% for s in items %}
+  {% assign s_ts = s.datetime | date: "%s" | plus: 0 %}
+  {% if s_ts >= now_ts %}
 
 * **{{ s.title }}**<br>
   {%- assign name_line = s.speaker -%}
@@ -41,10 +33,9 @@ Current Organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi
 
   Abstract{%- if s.abstract -%}: {{ s.abstract }}{%- endif -%}
 
-      {%- assign printed_upcoming = printed_upcoming | plus: 1 -%}
-    {%- endif -%}
-  {%- endfor -%}
-{%- endfor -%}
+  {%- assign printed_upcoming = printed_upcoming | plus: 1 -%}
+  {% endif %}
+{% endfor %}
 
 {% if printed_upcoming == 0 %}
 * **No upcoming seminars.**
