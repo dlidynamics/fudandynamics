@@ -52,9 +52,6 @@ Current Organizers: Dongchen Li, Jialun Li, Ronggang Shi, Ruxi Shi
 * **No upcoming seminars.**
 {% endif %}
 
-{% if printed_upcoming == 0 %}
-* **No upcoming seminars.**
-{% endif %}
 </details>
 
 {% comment %}
