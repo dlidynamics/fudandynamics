@@ -1,0 +1,12 @@
+---
+layout: seminar
+title: TBA
+speaker: Meng Wu       # 英文名（必填）
+speaker_cn:    吴猛         # 中文名（可选）
+affiliation:      # 英文单位（可选）
+affiliation_cn:   湖南大学       # 中文单位（可选）
+datetime: 2026-04-01 14:30
+place: Room 102, SCMS
+abstract: >
+  TBA
+---
