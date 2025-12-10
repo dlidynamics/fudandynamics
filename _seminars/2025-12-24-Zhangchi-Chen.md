@@ -12,7 +12,7 @@ abstract: >
 
 Using a positive integer sequence with exponential growth, A-B constructed a polynomial skew product map P in C^2 admitting wandering domains. Two biholomorphic invariants (real numbers) α,β (with α>1) can be defined by the coefficients of P. A-B proved that for given (α,β), if there exists a positive integer sequence (n_k) such that the phase sequence σ_k:=n_{k+1}-α*n_k-β*ln n_k converges, then P has wandering domains.
 
-This raises the question: For which (α,β) does there exist such a sequence (n_k) making (t_k) converge?
+This raises the question':' For which (α,β) does there exist such a sequence (n_k) making (t_k) converge?
 
 A-B showed that α must be a Pisot number. They also gave a condition for β : if θ=(β*ln α)/(α-1) is rational, then there exists a positive integer sequence (n_k) such that (σ_k) converges to a periodic point. They posed the question: Is the rationality of θ a necessary condition?
 
