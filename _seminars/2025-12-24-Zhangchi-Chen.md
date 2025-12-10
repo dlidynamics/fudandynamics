@@ -22,4 +22,4 @@ abstract: >
 
   As an application in dynamical systems, we constructed new polynomial skew product maps with wandering domains."
 
---
+---
