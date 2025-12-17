@@ -1,6 +1,6 @@
 ---
 layout: seminar
-title: Inertial manifolds: then and now
+title: "Inertial manifolds: then and now"
 speaker: Sergey Zelik         # 英文名（必填）
 speaker_cn:                # 中文名（可选）
 affiliation: University of Surrey & 浙江师范大学    # 英文单位（可选）
