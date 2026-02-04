@@ -1,0 +1,12 @@
+---
+layout: seminar
+title: TBA
+speaker: Xiaolong Li            # 英文名（必填）
+speaker_cn: 李晓龙             # 中文名（可选）
+affiliation: Huazhong University of Science and Technology     # 英文单位（可选）
+affiliation_cn:  华中科技大学         # 中文单位（可选）
+datetime: 2026-04-01 14:30
+place: Room 102, SCMS
+abstract: "
+TBA"
+---
