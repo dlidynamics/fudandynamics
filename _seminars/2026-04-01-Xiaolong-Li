@@ -1,6 +1,6 @@
 ---
 layout: seminar
-title: TBA
+title: Pluripotency and statistical behavior in nonhyperbolic dynamical systems
 speaker: Xiaolong Li            # 英文名（必填）
 speaker_cn: 李晓龙             # 中文名（可选）
 affiliation: Huazhong University of Science and Technology     # 英文单位（可选）
@@ -8,5 +8,5 @@ affiliation_cn:  华中科技大学         # 中文单位（可选）
 datetime: 2026-04-01 14:30
 place: Room 102, SCMS
 abstract: "
-TBA"
+Roughly speaking, pluripotency refers to the possibility of realizing prescribed statistical behaviors on sets of positive measure under arbitrarily small perturbations. In this talk, I will discuss a result on two-dimensional diffeomorphisms showing that, in the presence of a wild Smale horseshoe, strong pluripotency holds robustly for the entire horseshoe. As applications, one obtains the dense occurrence of dynamics with a nontrivial physical measure and of historic behavior on wandering domains. I will also explain the connection with Takens' last problem and discuss some of the main geometric ideas behind the construction. This is a joint work with S. Kiriki, Y. Nakano, T. Soma and E. Vargas."
 ---
