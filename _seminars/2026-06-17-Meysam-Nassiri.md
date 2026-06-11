@@ -7,7 +7,7 @@ affiliation: Institute for Research in Fundamental Sciences and BICMR       # �
 affiliation_cn:  # 中文单位（可选）
 datetime: 2026-06-17 15:30
 place: Room 102, SCMS
-abstract: |
+abstract: >
   Cantor sets arise naturally in many dynamical systems, and their geometry plays a fundamental role in understanding central problems in dynamics, particularly in bifurcation theory. 
 While all Cantor sets are topologically equivalent, their geometric properties can vary drastically, a diversity that becomes even richer as the dimension of the ambient space increases. 
 This talk presents new results addressing some basic questions concerning Cantor sets in higher-dimensional spaces. 
