@@ -23,7 +23,7 @@ title: Home
 
 **{{ next_seminar.title }}**<br/>
 {{ name_line }}{% if aff_en or aff_cn %} ({% if aff_en %}{{ aff_en }}{% endif %}{% if aff_en and aff_cn %} {{ aff_cn }}{% elsif aff_cn %}{{ aff_cn }}{% endif %}){% endif %}<br/>
-*{{ next_seminar.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if next_seminar.place %} — {{ next_seminar.place }}{% endif %}*
+*{{ next_seminar.datetime | date: "%Y-%m-%d (%a) %H:%M" }}{% if next_seminar.end_time %}–{{ next_seminar.end_time }}{% endif %}{% if next_seminar.place %} — {{ next_seminar.place }}{% endif %}*
 
 {% if next_seminar.abstract %}
 
