@@ -2,9 +2,9 @@
 layout: seminar
 title: Structural Invariant Manifolds of Neural Network Training Dynamics
 speaker: Jiajie Zhao    # 英文名（必填）
-speaker\_cn:  赵佳杰      # 中文名（可选）
+speaker_cn:  赵佳杰      # 中文名（可选）
 affiliation:  # 英文单位（可选）
-affiliation\_cn: 上海交通大学 # 中文单位（可选）
+affiliation_cn: 上海交通大学 # 中文单位（可选）
 datetime: 2026-12-02 16:00
 place: Room 102, SCMS
 abstract: >-
