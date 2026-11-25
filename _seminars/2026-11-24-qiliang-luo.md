@@ -1,4 +1,4 @@
->---
+---
 layout: seminar
 title: A random closed geodesic in hyperbolic manifolds is simple
 speaker: Qiliang Luo
